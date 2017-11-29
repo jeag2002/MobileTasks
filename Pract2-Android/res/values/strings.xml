@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EnviaUOC6</string>
+    <string name="user">User</string>
+    <string name="pass">Pass</string>
+    
+    <string name="button_send">SEND</string>
+    <string name="button_gps">GPS</string>
+    <string name="button_return">RETURN</string>
+    <string name="button_exit">EXIT</string>
+    
+   <string name="label_gps">SITUACION GPS:</string>
+   <string name="gps">SITUACION ACTUAL</string>
+   <string name="label_pedidos">PEDIDOS PENDIENTES:</string>
+   
+    
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">Login</string>
+    <string name="title_activity_gps">GPSActivity</string>
+
+</resources>

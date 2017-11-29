@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+ 	<string name="app_name">EnviaUOC</string>
+   <string name="action_settings">Settings</string>
+    <string name="textViewUsuario">Usuario:</string>
+    <string name="editTextUsuario">Usuario</string>
+    <string name="textViewPassword">Contraseña:</string>
+    <string name="editTextPassWord">Password</string>
+    <string name="buttonLogin">Entrar</string>
+
+    <string name="buttonMap">Definir punto envío</string>
+    <string name="buttonEnvios">Ver estado envíos</string>
+    <string name="buttonSalir">Cerrar sesión</string>
+</resources>

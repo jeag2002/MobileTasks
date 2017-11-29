@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dip"
+        android:gravity="center"
+        android:text="EnviaUOC"
+        android:textColor="#527fa4"
+        android:textSize="25dip" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_usuario"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:text="Menú Principal"
+        android:textColor="#527fa4"
+        android:textSize="25dip" />
+
+    <TextView
+        android:id="@+id/tv_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:textColor="#898a8b"
+        android:textSize="22dip" />
+
+    <Button
+        android:id="@+id/buttonPuntoEnvio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/buttonMap" />
+
+    <Button
+        android:id="@+id/buttonEstadoEnvio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonPuntoEnvio"
+        android:layout_alignRight="@+id/buttonPuntoEnvio"
+        android:layout_below="@+id/buttonPuntoEnvio"
+        android:text="@string/buttonEnvios" />
+
+    <Button
+        android:id="@+id/buttonSalir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonEstadoEnvio"
+        android:layout_alignRight="@+id/buttonPuntoEnvio"
+        android:layout_below="@+id/buttonEstadoEnvio"
+        android:text="@string/buttonSalir" />
+
+</RelativeLayout>

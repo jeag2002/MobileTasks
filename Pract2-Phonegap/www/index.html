@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+		<meta charset="utf-8"/>
+
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	
+	
+		<script src="lib/jquery-mobile/js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<!-- Javascript preparado para capturar los eventos "conection", "device" que dispara phonegap. Solo entornos de prueba -->
+		<script src="js/consolebasednativeapi.js" type="text/javascript" charset="utf-8"></script>
+		<!--  -->
+		
+		<script src="cordova.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="lib/jquery-mobile/css/jquery.mobile-1.4.5.min.css" /> 
+		<script src="lib/jquery-mobile/js/jquery.mobile-1.4.5.js" type="text/javascript" charset="utf-8"></script>
+							
+		<title>ENVIAUOC</title>
+	</head>
+	
+	<body>
+	
+	<!-- SPLASH (pageone) -->
+	<div data-role="page" id="pageone" data-url="pageone" tabindex="0">
+		<div data-role="main" class="ui-content">
+			 
+			 <!-- Splash Page Entornos de Produccion -->
+			 <!-- 
+			 <div class="app">
+            	<h1>ENVIAUOC</h1>
+            	<div id="deviceready" class="blink">
+	                <p class="event listening">Connecting to Device</p>
+	                <p class="event received">Device is Ready</p>
+            	</div>
+        	</div>
+        	-->
+        	<!-- Boton preparado para el entorno de pruebas -->
+        	<a href="#pagetwo" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left">LOGIN</a>
+		</div>
+	</div>
+	
+	<!-- LOGIN (pagetwo) --> 
+	<div data-role="page" id="pagetwo" data-url="pagetwo" tabindex="0">
+	  
+	  <div data-role="header">
+			 <a href="#" onclick="Exit()" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>
+			 <h1>Login</h1>
+			 <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left">Search</a>
+	  </div>
+
+	  <div data-role="main" class="ui-content">
+          
+		  <form method="post" action="" data-theme="a">
+		  	  
+		  	  <div class="ui-grid-a">
+		  	  				      
+			      <div class="ui-block-a" style="width:30%;">
+			      <label for="name">User:</label>
+			      </div>
+			      
+			      <div class="ui-block-b" style="width:70%;">
+			      <input type="text" name="name" id="name" data-clear-btn="true" placeholder="Insert user...">
+		      	  </div>
+		      	  
+		      	  <div class="ui-block-a" style="width:30%;">	
+		      	  <label for="pass">Password:</label>
+		      	  </div>
+		      	  
+		      	  <div class="ui-block-b" style="width:70%;">
+			      <input type="password" name="pass" id="pass" data-clear-btn="true" placeholder="Insert pass...">
+			      </div>
+			      
+	      	  </div>
+	      	  
+	      </form>
+	      	
+	   </div>
+	   
+	   <div data-role="footer">
+	   		<div class="center-wrapper">
+	 	 		<a href="#" onclick="evaluateAccess()" class="ui-btn ui-btn-inline">Access</a>
+	 	 	</div>
+	   </div>
+	   	   
+	</div>  
+	
+	<!-- MAIN (pagethree)-->
+	 
+	<div data-role="page" id="pagethree" data-url="pagethree" tabindex="0">
+		
+	   <div data-role="header">
+	      			<a href="#" onclick="returnToPageOne()" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>
+			 		<p align="center">User:<span id="usergeneral">XXXXXX</span> Time:<span id="stopwatch">00:00:00</span></p>
+			 		<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left">Search</a>
+			    	<div data-role="navbar">
+			    		<ul>
+						 	<li><a href="#pagefive" data-icon="navigation" class="ui-btn ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-top">Deliveries</a></li>
+						 	<li><a href="#pageeight" data-icon="gear" class="ui-btn ui-corner-all ui-shadow ui-icon-gear ui-btn-icon-top">Config</a></li>
+						 	<li><a href="#pagefour" data-icon="mail" class="ui-btn ui-corner-all ui-shadow ui-icon-mail ui-btn-icon-top">Messages</a></li>
+				 		</ul>
+				 	</div>
+	  </div>
+	  
+	  <div data-role="main" class="ui-content">
+	  		
+	  		<div id="" style="overflow-y: scroll; height:400px;">	
+	 	 	<ul data-role="listview" id="deliveries" data-inset="true">
+    		</ul>
+    		</div>		
+	  </div>
+	   
+	</div>
+	
+	
+	<!-- DIALOG DE AVISO (pagefour) -->
+	<div data-role="page" data-dialog="true" id="pagefour" data-url="pagefour">
+	  	<div data-role="main" class="ui-content">
+	  		<div class="ui-grid-solo">
+		  		<div class="ui-block-a">
+		  		<p style="text-align:center;">Feature not implemented yet!</p>
+	    		</div>
+	    		<div class="ui-block-a">
+	    		<a href="#" onclick="goBack()" class="ui-btn ui-corner-all ui-shadow ui-icon-arrow-l ui-btn-icon-left">Return to Previous Page</a>
+	  			</div>	
+  			</div>
+  		</div>
+	</div>
+	
+	<!-- pagina de popup http://stackoverflow.com/questions/5747382/jquery-mobile-alert-confirmation-dialogs -->
+	<div data-role="dialog" id="sure" data-title="Advice">
+  		<div data-role="content">
+    		<p class="sure-2">???</p>
+    		<a href="#" data-role="button" data-theme="c" data-rel="back">Ok</a>
+  		</div>
+	</div>
+	
+	
+	
+	<!-- ENVIOS (pagefive) -->
+	<div data-role="page" id="pagefive" data-url="pagefive" tabindex="0">
+		 <div data-role="header">
+	      			<a href="#" onclick="returnToPageOne()" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>
+			 		<h1 class="ui-title">Deliveries</h1>
+			 		<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left">Search</a>
+			    	<div data-role="navbar">
+			    		<ul>
+						 	<li><a href="#pagefour" data-icon="home" class="ui-btn ui-corner-all ui-shadow ui-icon-clock ui-btn-icon-top">Actualize</a></li>
+						 	<li><a href="#pagefour" data-icon="delete" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-top">Delete</a></li>
+				 		</ul>
+				 	</div>
+	 	 </div>
+	 	 
+	 	 <div data-role="main">
+	 	 	
+	 	 	<div data-role="navbar" data-theme="c">
+				<ul>
+					<li style="width:25%;"><a href="">Delivery</a></li>
+					<li style="width:25%;"><a href="">Modify?</a></li>
+					<li style="width:25%;"><a href="">Info </a></li>
+					<li style="width:25%;"><a href="">Query</a></li>
+				</ul>
+			</div>
+	 	 
+	 	 	<div id="" style="overflow-y: scroll; height:400px;">	
+	 	 	<ul data-role="listview" id="deliveries_1" data-inset="true">
+    		</ul>
+    		</div>
+	 	 </div>
+	 	 
+	 	 <div data-role="footer">
+				<fieldset data-role="controlgroup" data-type="horizontal" >
+		 	 	<!-- va a página de alta de envios -->
+		 	 	<a href="#" onclick="altaEnvio()" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-top" style="width: 100px;">New Delivery</a>
+		 	 	<!-- vuelve a MAIN -->
+		 	 	<a href="#pagethree"  class="ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-top" style="width: 100px;">Return</a>
+		 	 	</fieldset>
+	 	 </div>
+	</div>
+	
+	<!-- ALTA DE ENVIOS (pagesix) -->
+	<div data-role="page" id="pagesix" data-url="pagesix" tabindex="0">
+		
+		<div data-role="header">
+	      	<a href="#" onclick="returnToPageOne()" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>
+			<h1 class="ui-title">Delivery <span id="ActionDel">XXXXXX</span></h1>
+			<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left">Search</a>
+	 	</div>
+	 	
+	 	<div data-role="main">
+	 		<div class="ui-grid-solo">
+	 			<div class="ui-block-a">
+			 		
+			 		<form method="post" action="" data-theme="a">
+			 			<div class="ui-grid-a">
+			 					
+			 					<div class="ui-block-a" style="width:30%;">
+					      			<label for="codEnvio">Code:</label>
+					      		</div>
+					      
+					      		<div class="ui-block-b" style="width:70%;">
+					      			<input type="text" name="codEnvio" id="codEnvio" data-clear-btn="true" placeholder="Insert code ...">
+				      	  		</div>
+				      	  		
+				      	  		<div class="ui-block-a" style="width:30%;">
+					      			<label for="delType">Type:</label>
+					      		</div>
+					      
+					      		<div class="ui-block-b" style="width:70%;">
+					      			  <select name="delType" id="delType">
+		      								<option value="1">Express</option>
+		      								<option value="2">Normal</option>
+		      								<option value="3">Planified</option>
+		    						 </select>
+				      	  		</div>
+				      	  		
+				      	  		<div class="ui-block-a" style="width:30%;">
+					      			<label for="delState">State:</label>
+					      		</div>
+					      
+					      		<div class="ui-block-b" style="width:70%;">
+					      			  <select name="delState" id="delState">
+					      			  		<option value="1">Purchasing</option>
+		      								<option value="2">Packeting</option>
+		      								<option value="3">Delivering</option>
+		      								<option value="4">Arriving</option>
+		    						 </select>
+				      	  		</div>
+				      	  		
+				      	  		<div class="ui-block-a" style="width:30%;">
+					      			<label for="delGPS">GPS:</label>
+					      		</div>
+					      
+					      		<div class="ui-block-b" style="width:70%;">
+					      			<input type="checkbox" data-role="flipswitch" name="delGPS" id="delGPS" checked>
+				      	  		</div>
+				      	  		
+				      	  		
+				      	  		<div class="ui-block-a" style="width:30%;">
+					      			<label for="delSit">Situation:</label>
+					      		</div>
+					      
+					      		<div class="ui-block-b" style="width:70%;">
+					      			 <div class="ui-grid-a">
+					      			 	 <div class="ui-block-a">
+					      			 	 	  <input type="text" name="delSit" id="delSit" data-clear-btn="true" placeholder="Insert Sit ...">	
+					      			 	 </div>	
+					      			 	 <div class="ui-block-b">
+					      			 	 	  <!--  
+					      			 	 	  <a id="linkGPS" href="#pageseven" class="ui-btn ui-corner-all ui-shadow ui-icon-eye ui-btn-icon-left"></a>
+					      			 	 	  -->
+					      			 	 	  <input type="button" id="linkGPS" onclick="goToGPS()" value="GPS" class="enableDisableGPS" />
+					      			 	 </div>	
+					      			 </div>
+					      		</div>
+				      	 </div>			      	  		
+				      	  	
+				      	 <div class="ui-grid-b">
+				      	 
+				      	  	  <div class="ui-block-a">
+				      	  	  		<!--  
+					      			<a id="SaveData" href="#" onclick="processDataDelivery()" class="ui-btn ui-corner-all ui-shadow ui-icon-check ui-btn-icon-left">Submit</a>
+					      			-->
+					      			<input type="button" id="SaveData" onclick="processDataDelivery()" value="Submit" class="enableDisableSaveData"/>
+					      	  </div>
+					      	  
+					      	  <div class="ui-block-b">
+					      	  		<!-- 
+					      	  	    <a id="SaveState" href="#" onclick="guardarAltaState()" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-left">New State</a>
+					      	  	    -->
+					      	  	   <input type="button" id="SaveState" onclick="guardarAltaState()" value="New State" class="enableDisableSaveState"/>
+					      	  </div>
+
+					      	  <div class="ui-block-c">
+					      			<a href="#" onclick="goBack()" class="ui-btn ui-corner-all ui-shadow ui-icon-arrow-l ui-btn-icon-left">Return</a>
+					      	  </div>
+					     </div>
+					      	
+			 		</form>
+			 		
+		 		</div>
+		 		
+		 		<div class="ui-block-a">
+		 			
+					<div id="" style="overflow-y: scroll; height:400px;">	
+	 	 				<ul data-role="listview" id="states" data-inset="true">    					
+	 	 				</ul>
+    				</div>
+		 		</div>
+		 		
+		 	</div>	
+	 	</div>
+	</div>
+	
+	<!-- GPS (pageseven) -->
+	<div data-role="page" id="pageseven" data-url="pageseven" tabindex="0">
+		
+		<div data-role="header">
+	      	<a href="#" onclick="returnToPageOne()" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>
+			<h1 class="ui-title">GPS Data</h1>
+			<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left">Search</a>
+	 	</div>
+		
+		<div data-role="main">
+			<div class="ui-grid-solo">
+	 			<div class="ui-block-a">
+	 				 <p id="locationInfo"></p>
+				</div>
+			</div>
+		</div>
+		
+		<div data-role="footer">
+			<fieldset data-role="controlgroup" data-type="horizontal" >
+		 	 	<a href="#" onclick="getLocation()" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-top" style="width: 100px;">Location</a>
+		 	 	<!-- vuelve a la pagina de alta de envio -->
+		 	 	<a href="#pagesix"  class="ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-top" style="width: 100px;">Return</a>
+		 	 </fieldset>
+	 	 </div>
+	</div>
+	
+	
+	<!-- CONFIGURATION (pageeight) -->
+	
+	<div data-role="page" id="pageeight" data-url="pageeight" tabindex="0">
+		
+		<div data-role="header">
+	      	<a href="#" onclick="returnToPageOne()" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>
+			<h1 class="ui-title">Configuration</h1>
+			<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left">Search</a>
+	 	</div>
+	 	
+	 	<div data-role="main">
+					 	<form method="post" action="" data-theme="a">
+					 				<div class="ui-grid-a">
+					 					
+					 					<div class="ui-block-a" style="width:30%;">
+					 						<label for="checkboxGPS">GPS active:</label>
+							      		</div>
+							      
+							      		<div class="ui-block-b" style="width:70%;">
+							      			<input type="checkbox" data-role="flipswitch" name="checkboxGPS" id="checkboxGPS" checked>
+						      	  		</div>	
+						      	  		
+						      	  		<div class="ui-block-a" style="width:30%;">
+					 						<label for="actGPS">Act GPS:</label>
+							      		</div>
+							      
+							      		<div class="ui-block-b" style="width:70%;">
+							      			<input type="checkbox" data-role="flipswitch" name="actGPS" id="actGPS" checked>
+						      	  		</div>
+						      	  		
+						      	  		<div class="ui-block-a" style="width:30%;">
+					 						<label for="minGPS">Act GPS (min):</label>
+							      		</div>
+							      
+							      		<div class="ui-block-b" style="width:20%;">
+							      			<input type="text" name="minGPS" id="minGPS" data-clear-btn="true">
+						      	  		</div>	
+						      	  		
+						      	  		
+						      	  		<div class="ui-block-a" style="width:30%;">
+						      	  			<label for="checkboxOnline">OffLine/Online:</label>
+							      		</div>
+							      
+							      		<div class="ui-block-b" style="width:70%;">
+							      			<input type="checkbox" data-role="flipswitch" name="checkboxOnline" id="checkboxOnline" checked>
+						      	  		</div>
+						      	  	</div>
+					 	</form>
+		</div>
+		
+		<!-- vuelve a la página principal -->
+		<div data-role="footer">
+			<a href="#pagethree" class="ui-btn ui-corner-all ui-shadow ui-icon-eye ui-btn-icon-left">Submit</a>
+		</div>
+	</div>
+	
+	<!-- drivers que gobiernan la aplicación, al final de la misma -->
+	<!-- variables globales -->
+	<script src="js/global.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- timer de actualización -->
+	<script src="lib/jquery-time/jquery.timer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/timer.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- carga de datos remotos -->
+	<script src="lib/backbone/underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/backbone/backbone.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="js/SQLitePlugin.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/sqlremote.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/persistence.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- carga de datos locales -->
+	
+	<!-- geolocation -->
+	<script src="js/geolocation.js" type="text/javascript" charset="utf-8"></script>
+	
+	
+	<!-- inicio -->
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- gestion de la navegacion -->
+	<script src="js/view.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/navigation.js" type="text/javascript" charset="utf-8"></script>
+	
+	</body>	
+</html>  

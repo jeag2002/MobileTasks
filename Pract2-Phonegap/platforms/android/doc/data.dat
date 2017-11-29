@@ -1,0 +1,72 @@
+http://www.hongkiat.com/blog/build-websites-apps-jquery-mobile/
+http://www.gajotres.net/building-a-native-mobile-app-with-phonegap-and-jquery-mobile-1-4/
+
+jqueryruntime: (1-11-1): http://jquery.com/download/
+fastclick: https://github.com/ftlabs/fastclick
+handlebars: http://handlebarsjs.com/
+blackbone: http://backbonejs.org/#
+jquery-mobile-router: https://github.com/azicchetti/jquerymobile-router
+
+iscroll: http://www.gajotres.net/using-iscroll-with-jquery-mobile/
+
+splash page: http://stackoverflow.com/questions/10763583/jquery-mobile-splash-screen-with-javascript
+
+sqlite: http://iphonedevlog.wordpress.com/2014/04/07/installing-chris-brodys-sqlite-database-with-cordova-cli-android/
+
+ripple: https://chrome.google.com/webstore/detail/ripple-emulator-beta/geelfhphabnejjhdalkjhgipohgpdnoc/related?hl=en
+
+http://docs.phonegap.com/en/4.0.0/guide_cli_index.md.html#The%20Command-Line%20Interface
+
+Versiones:
+
+1.0 -Utilidad minima: Navegación de menus y pantallas
+1.1 -Utilidad minima + Posicionamiento -- Pedido expresamente en la pac
+1.2 -Utilidad minima + Posicionamiento + GoogleMap
+1.3 -Utilidad minima + Posicionamiento + GoogleMap + Persistencia (remota)
+1.4 -Utilidad minima + Posicionamiento + GoogleMap + Persistencia (remota) + Persistencia (local)
+
+
+errores chungos mensajes cordova:
+http://stackoverflow.com/questions/18623351/phonegap-3-alert-that-if-i-click-ok-crashes-broswer
+https://gist.github.com/ewiger/7d5e0cc8fccf311e9ce2
+
+Timer:
+http://stackoverflow.com/questions/23921523/how-to-implement-timer-in-phonegap
+https://code.google.com/p/jquery-timer/
+
+(En vez de parser, yo utilizo backbone, cuya utilidad es similar, y está mas
+extendido)
+
+Backbone:
+http://www.codebeerstartups.com/2012/12/9-collection-views-in-backbone-js-learning-backbone-js
+http://backbonetutorials.com/what-is-a-model/
+
+storage:
+http://diveintohtml5.info/storage.html
+
+google-map:
+https://github.com/wf9a5m75/phonegap-googlemaps-plugin/wiki/Phonegap-Usage
+
+google-map-offline:
+http://geospatialscott.blogspot.com.es/2012/04/phonegap-leaflet-tilemill-offline.html
+
+backbone_push:
+http://www.gianlucaguarini.com/blog/backbone-and-html5-push-navigation/
+
+templates:
+http://www.9bitstudios.com/2013/05/using-templates-in-backbone-js/
+
+splash:
+https://www.youtube.com/watch?v=kc5eU7s88Jk
+
+*******************************************************************************************************
+Objetivos:
+
+Dia 14-12-2014
+
+1-Timer(OK)
+2-GPS(OK)
+3-Persistencia(Falta funcion de alta/modificacion) + storage
+4-Splash(50%)
+
+*******************************************************************************************************

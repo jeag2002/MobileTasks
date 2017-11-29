@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>EnviaUOC</title>
+
+<link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.2.min.css" />
+<script src="jquery-mobile/jquery-2.1.1.min.js"></script>
+<script src="jquery-mobile/jquery.mobile-1.4.2.min.js"></script>
+<script src="js/purl.js" type="text/javascript"></script>
+</head> 
+
+<body> 
+	<div data-role="page" id="envios">
+    
+	<script type="text/javascript">
+		var url = $.url(document.location);
+        var datosUsuario = url.param("usuario");
+	
+		$("#envios").bind("pageshow", function(event){
+			//$("#span_usuenv").html("<b>"+datosUsuario+"</b>");
+			consultarEnvios();
+		});
+
+		function consultarEnvios(){
+			archivoDatos = "http://192.168.1.36/pra2enviospg/php/get_envios.php?"
+			$.getJSON(archivoDatos, {usuario:datosUsuario}).done(function(respuestaServer) {
+				console.log(JSON.stringify(respuestaServer));
+				var lista = "";
+				if(respuestaServer.success=="1"){ //Usuario OK
+				
+					for (var i in respuestaServer.envios) {
+						lista += "<li><div id='infoEnv'>";
+						lista += "Nombre: <b>" + respuestaServer.envios[i].nom_envio + "</b><br>";
+						lista += "Núm. Envío: <b>" + respuestaServer.envios[i].id_envio + "</b><br>";
+						lista += "Estado: <b>" + respuestaServer.envios[i].estat_envio+"   "+respuestaServer.envios[i].data+"</b>";
+						lista += "</div>";
+						lista += "</li>";
+					}
+	
+					$("#listaDatos").html(lista);
+					$("#listaDatos").listview().listview('refresh');
+				}else{
+					lista += "<li><div id='infoEnv'>Sin envíos.</div></li>";
+				}
+			})
+		}
+	</script>
+
+	<div data-role="header" data-theme="b">
+		<h1> Envios </h1>
+	    <a href="" class="ui-btn-left" data-rel="back" >Volver</a> 					
+    </div>
+	<div data-role="content" data-theme="a">	
+		<!--<h3 align="center">Usuario:<span id="span_usuenv"></span></h3>-->
+		<ul data-role="listview" id="listaDatos"></ul>
+	</div>
+</div>
+
+</body>
+</html>

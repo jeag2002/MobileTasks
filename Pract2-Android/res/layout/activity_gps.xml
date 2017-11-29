@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_pedidos"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bordersh">
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+        
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView4"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_gps"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+	<TextView
+    	android:id="@+id/textView5"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:maxLines="4"
+   	 	android:lines="4" 
+   	 	android:background="@drawable/bordersh"
+   	 	android:text="@string/gps"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getGPS"
+            android:text="@string/button_gps"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="returnMain"
+            android:text="@string/button_return"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>EnviaUOC</title>
+<link rel="stylesheet" href="css/mapa.css" />
+
+<link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.2.min.css" />
+<script src="jquery-mobile/jquery-2.1.1.min.js"></script>
+<script src="jquery-mobile/jquery.mobile-1.4.2.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script src="js/purl.js" type="text/javascript"></script>
+<script src="js/mapa.js"></script>
+
+<script>
+	$(function() {
+		var url = $.url(document.location);
+        var datosUsuario = url.param("usuario");
+
+		lanzarMapa(); //Mostramos en un mapa la localización actual (Geolocalización)
+		consultarLocalizacion(); //Consultamos la última localización guardada del usuario
+
+		function lanzarMapa(latlng) {
+			 var defaultPos = new google.maps.LatLng(42.356232,1.4564086,15);
+			 if (navigator.geolocation) {
+				function exito(pos) {
+					MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+		
+				}
+				function falla(error) {
+					alert('Error en servicio geolocalizador');
+					MuestraMapa(defaultPos); 
+				}
+				
+				//maximumAge- Guarda la posicion por 5 minutos 
+				//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
+				//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
+				var options = {maximumAge: 500000, enableHighAccuracy:true, timeout: 5000};
+				navigator.geolocation.getCurrentPosition(exito, falla, options );
+			 }else {
+				MuestraMapa(defaultPos);  // No puede usar la geolocalizacion y dibuja el mapa en posicion definida por defecto
+			 }
+		 }
+	 
+		 //Dibujamos el mapa de GoogleMaps según nuestra posición
+		 function MuestraMapa(latlng) {
+			var capa = String(latlng);
+			var res = capa.replace(/\(|\)/g, '');//Quitar los parentesis
+			var latitud=  res.substring(0, res.indexOf(','));
+			var longitud=  res.substring(res.indexOf(",") + 2);
+			
+			$('#LatY').val(latitud);
+			$('#LongX').val(longitud);
+			
+			var myOptions = {zoom: 16,
+							 center: latlng,
+							 disableDefaultUI: true,
+							 mapTypeId: google.maps.MapTypeId.ROADMAP};
+			
+			var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+			
+			var infowindow = new google.maps.InfoWindow({
+								  position: latlng,
+								  content: '<p>Posición actual</p>'+latlng
+							  });
+			
+			var marker = new google.maps.Marker({
+				position: latlng,
+				map: map,
+				title: "Mi posición",
+				animation: google.maps.Animation.DROP
+			});
+			
+			google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
+		 }
+
+		//Obtenemos los datos de la localizacion guardada del usuario
+		function consultarLocalizacion(){
+			archivoDatos = "http://192.168.1.36/pra2enviospg/php/get_localizacion.php?"
+			$.getJSON(archivoDatos, {usuario:datosUsuario}).done(function(respuestaServer) {
+				console.log(JSON.stringify(respuestaServer));
+				
+				if(respuestaServer.success=="1"){ //Usuario OK
+					$('#LatYant').val(respuestaServer.localizacion[0].latitud);
+					$('#LongXant').val(respuestaServer.localizacion[0].longitud);
+				}else{
+					$('#LatYant').val(" ");
+					$('#LongXant').val(" ");
+				}
+			})
+		}
+		
+		//Actualizamos la localizacion de envío del usuario a la actual
+		$("#guardardatos").click(function() {
+			var fLatY = $("#LatY").val();
+			var fLongX = $("#LongX").val();
+
+ 		    $.ajax({type: "POST", 
+					url: "http://192.168.1.36/pra2enviospg/php/update_localizacion.php",
+					data: ({usuario:datosUsuario,latitud: fLatY, longitud: fLongX}),
+ 				  	cache: false,
+				  	dataType: "text",
+				  	success: ActualizarDatos
+			});
+		});
+			
+		function ActualizarDatos(data){       
+			$.mobile.changePage("menu.html",{data:{usuario:datosUsuario}});
+		}
+	});
+</script>
+
+</head> 
+<body> 
+	 <div id="paginaMapa" data-role="page">  
+          <div data-role="header" data-theme="b">
+               <h1>Localización actual</h1>
+               <a href="" class="ui-btn-left" data-rel="back" >Volver</a> 		
+          </div>
+          <div data-role="content">	
+          	   <div id="map-canvas"></div>
+          </div>
+  	      <a href="#paginaLocalizacion" id="manda" class="miBoton posicionBoton" ></a>
+     </div>
+
+	<div id="paginaLocalizacion" data-role="page" data-theme="a">
+         <div data-role="header" data-theme="b">
+                <h1>Nuevo punto de envío</h1>
+                <a href="" class="ui-btn-left" data-rel="back" >Volver</a> 
+         </div>
+         
+         <h3 align="center">Punto envío actual</h3>
+         <div data-role="fieldcontain">
+                 <label for="LatY">Latitud:</label>
+                 <input type="text" disabled="disabled" name="LatYant" id="LatYant" value=""  />
+         </div>
+         <div data-role="fieldcontain">
+                 <label for="LongX">Longitud:</label>
+                 <input type="text" disabled="disabled" name="LongXant" id="LongXant" value="" />
+         </div>
+ 
+         <h3 align="center">Localización actual</h3>
+         <div data-role="fieldcontain">
+                 <label for="LatY">Latitud:</label>
+                 <input type="text" disabled="disabled" name="LatY" id="LatY" value=""  />
+         </div>
+         <div data-role="fieldcontain">
+                 <label for="LongX">Longitud:</label>
+                 <input type="text" disabled="disabled" name="LongX" id="LongX" value="" />
+         </div>
+         <button type="button" id="guardardatos">Guardar localización actual</button>
+    </div>
+</body>
+</html>

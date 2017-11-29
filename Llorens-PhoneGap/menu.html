@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>EnviaUOC</title>
+<link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.2.min.css" />
+<script src="jquery-mobile/jquery-2.1.1.min.js"></script>
+<script src="jquery-mobile/jquery.mobile-1.4.2.min.js"></script>
+<script src="js/purl.js" type="text/javascript"></script>
+</head> 
+
+<body> 
+<div data-role="page" id="menu">
+	<script type="text/javascript">
+		$("#menu").bind("pageshow", function(event){
+			var url = $.url(document.location);
+            var arg1 = url.param("usuario");
+			
+			$("#span_login").html("<b>" + arg1 +"</b>");
+			
+			$("#enviosBtn").click(function(event){
+				$.mobile.changePage("envios.html",{data:{usuario:arg1}}); //També funciona -> "envios.html?usuario="+arg1
+			});
+
+			$("#localizacionBtn").click(function(event){
+				//$.mobile.changePage("localizacion.html",{data:{usuario:arg1}, reloadPage : true, changeHash : true});
+				window.location="localizacion.html?usuario="+arg1; //Ho llanço extern per poder executar el Script del head
+			});
+		});
+	</script>
+
+	<div data-role="header" data-theme="b">
+		<h1>EnviaUOC</h1>
+	</div>
+	<b></b>
+	<h3 align="center">Usuario: <span id="span_login"></span></h3>
+	<b></b>
+	<h2 align="center">Menú Principal</h2>
+
+	<a href="#" id="localizacionBtn" rel="external" data-role="button">Definir punto envío</a>
+    <a href="#" id="enviosBtn"  data-role="button">Ver estado envíos</a>
+	<a href="index.html" data-role="button">Cerrar sesión</a>
+</div>
+</body>
+</html>

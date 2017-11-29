@@ -1,0 +1,58 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+<meta charset="utf-8">
+<title>EnviaUOC</title>
+<link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.2.min.css" />
+<script src="jquery-mobile/jquery-2.1.1.min.js"></script>
+<script src="jquery-mobile/jquery.mobile-1.4.2.min.js"></script>
+<script src="js/purl.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+</head> 
+
+<body> 
+<div data-role="page" id="login">
+	<div data-role="header" data-theme="b">
+		<h1>EnviaUOC</h1>
+	</div>
+	<div data-role="content">	
+		<form id="formulario" >
+      			<label> Usuario </label>
+      			<input type="text" id="nombredeusuario" name="nombredeusuario">
+      
+      			<label> Contraseña </label>
+     			<input type="password" id="clave" name="clave" >
+      			<input type="submit" value="Entrar" id="botonLogin">
+    	</form>		
+	</div>
+</div>
+ 
+<script>
+$('#formulario').submit(function() { 
+	// recolecta los valores que inserto el usuario
+	var datosUsuario = $("#nombredeusuario").val()
+	var datosPassword = $("#clave").val()
+	
+	if (datosUsuario=="" && datosPassword==""){
+		 alert("Error validando usuario o contraseña.")
+	}else{
+		archivoValidacion = "http://192.168.1.36/pra2enviospg/php/acces.php?"
+		$.getJSON( archivoValidacion, {usuario:datosUsuario ,password:datosPassword})
+		.done(function(respuestaServer) {
+			//alert(respuestaServer.message + "\nsuccess: " + respuestaServer.success)
+			if(respuestaServer.success=="1"){ //Usuario OK
+				$.mobile.changePage("menu.html",{data:{usuario:datosUsuario}});
+				//$.mobile.changePage("menu.html?usuario="+datosUsuario);
+			}else{ //Usuario ERROR
+			  alert("Usuario incorrecto.")
+			  //navigator.notification.alert('Usuario incorrecto.',null,'Login', 'Aceptar');
+			}
+		})
+	}
+	return false;
+})
+</script>
+
+</body>
+</html>
